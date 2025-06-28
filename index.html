@@ -5,542 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RIPTIDE | PC Mod Menu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #00a8ff;
-            --secondary: #2c3e50;
-            --accent: #e74c3c;
-            --dark: #1a1a1a;
-            --light: #ecf0f1;
-            --primary-soft: rgba(0, 168, 255, 0.3);
-            --accent-soft: rgba(231, 76, 60, 0.3);
-            --primary-shadow: rgba(0, 168, 255, 0.4);
-            --primary-shadow-hover: rgba(0, 168, 255, 0.6);
-            --primary-border: rgba(0, 168, 255, 0.2);
-            --primary-hover: rgba(0, 168, 255, 0.4);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--dark);
-            color: var(--light);
-            overflow-x: hidden;
-            transition: background-color 1s ease;
-        }
-        
-        .color-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 10% 20%, var(--primary-soft) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, var(--accent-soft) 0%, transparent 20%);
-            z-index: -2;
-            opacity: 0.1;
-            transition: all 1s ease;
-            pointer-events: none;
-        }
-        
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            background-color: var(--dark);
-        }
-        
-        .content-wrapper {
-            position: relative;
-            z-index: 1;
-        }
-        
-        header {
-            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(26, 26, 26, 0.95) 100%);
-            padding: 1.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--primary);
-        }
-        
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo img {
-            height: 40px;
-        }
-        
-        .logo h1 {
-            font-size: 1.8rem;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .hero {
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            padding: 2rem;
-            z-index: 2;
-        }
-        
-        .hero h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px var(--primary-shadow);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px var(--primary-shadow-hover);
-        }
-        
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .cta-button:hover::before {
-            left: 100%;
-        }
-        
-        .features {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        .section-title p {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .pricing-card {
-            background: linear-gradient(145deg, rgba(44, 62, 80, 0.7), rgba(26, 26, 26, 0.8));
-            border-radius: 15px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            border: 1px solid var(--primary-border);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            border-color: var(--primary-hover);
-        }
-        
-        .pricing-card.popular::before {
-            content: 'MOST POPULAR';
-            position: absolute;
-            top: 15px;
-            right: -30px;
-            background-color: var(--accent);
-            color: white;
-            padding: 5px 30px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            transform: rotate(45deg);
-        }
-        
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        
-        .pricing-header h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-        
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 1rem 0;
-            color: white;
-        }
-        
-        .price span {
-            font-size: 1rem;
-            opacity: 0.7;
-        }
-        
-        .features-list {
-            list-style: none;
-            margin: 2rem 0;
-        }
-        
-        .features-list li {
-            padding: 10px 0;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-        }
-        
-        .features-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .features-list li i {
-            color: var(--primary);
-            margin-right: 10px;
-        }
-        
-        .purchase-btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(45deg, var(--secondary), var(--dark));
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            text-decoration: none;
-        }
-        
-        .purchase-btn:hover {
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            color: white;
-            border-color: transparent;
-        }
-        
-        .preview-section {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, rgba(44, 62, 80, 0.2), rgba(26, 26, 26, 0.3));
-            border-top: 1px solid var(--primary-border);
-            border-bottom: 1px solid var(--primary-border);
-        }
-        
-        .preview-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .media-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            gap: 10px;
-        }
-        
-        .tab-btn {
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 5px;
-            color: var(--light);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .tab-btn.active {
-            background: var(--primary);
-            color: var(--dark);
-            font-weight: 600;
-        }
-        
-        .tab-btn:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .media-item {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            height: 200px;
-            position: relative;
-            border: 1px solid var(--primary-border);
-        }
-        
-        .media-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 25px var(--primary-shadow);
-        }
-        
-        .media-item img, .media-item video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .media-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            padding: 1rem;
-            color: white;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .media-item:hover .media-caption {
-            opacity: 1;
-        }
-        
-        footer {
-            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(26, 26, 26, 0.95));
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 2px solid var(--primary);
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: left;
-        }
-        
-        .footer-column h3 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            color: var(--light);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-column ul li a:hover {
-            opacity: 1;
-            color: var(--primary);
-            padding-left: 5px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 1rem;
-        }
-        
-        .social-links a {
-            color: var(--light);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
-        }
-        
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .nav-links {
-                gap: 1rem;
-            }
-            
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-            
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Animations */
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-        
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-        
-        .pulse {
-            animation: pulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes colorChange {
-            0% { background-color: #00a8ff; }
-            20% { background-color: #9c88ff; }
-            40% { background-color: #fbc531; }
-            60% { background-color: #4cd137; }
-            80% { background-color: #e84118; }
-            100% { background-color: #00a8ff; }
-        }
-        
-        .color-change {
-            animation: colorChange 20s infinite;
-        }
-    </style>
+   
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <div class="color-overlay"></div>
@@ -554,68 +21,67 @@
                     <h1>RIPTIDE</h1>
                 </div>
                 <div class="nav-links">
-                    <a href="#features">Features</a>
-                    <a href="#preview">Preview</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#support">Support</a>
+                   
+                    <a href="support.html">Support</a>
+                    <a href="support.html">Loader</a>
+                    <a href="#support">Lua Api Docs</a>
                 </div>
             </div>
         </header>
         
         <section class="hero">
             <div class="hero-content">
-                <h2 class="floating">RIPTIDE GTA 5 MOD MENU</h2>
-                <p>The most advanced and undetected mod menu for Grand Theft Auto V with regular updates and premium features.</p>
-                <a href="#pricing" class="cta-button pulse">DIVE IN NOW</a>
+                <h2 class="floating">RIPTIDE</h2>
+                <p>The most advanced and undetected mod menu for Grand Theft Auto V & Red Dead Redemption 2 with regular updates and premium features.</p>
+                <a href="#pricing" class="cta-button pulse">Discord</a>
             </div>
         </section>
         
-        <section class="features" id="features">
-            <div class="section-title">
-                <h2>POWERFUL FEATURES</h2>
-                <p>Our mod menu comes packed with everything you need to dominate Los Santos</p>
-            </div>
-        </section>
+
         
         <section class="pricing" id="pricing">
             <div class="section-title">
-                <h2>PRICING PLANS</h2>
-                <p>Choose the plan that fits your needs</p>
+                <h2>Packages</h2>
+                <p>Choose the Packages that fits your needs</p>
             </div>
             
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-header">
-                        <h3>FREE</h3>
+                        <h3>GTA V - FREE </h3>
                         <div class="price">$0.00 <span>/1 day</span></div>
                     </div>
                     <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Basic Features </li>
+                        
                         <li><i class="fas fa-check"></i> Lua Api</li>
                         <li><i class="fas fa-check"></i> Self Mods</li>
                         <li><i class="fas fa-check"></i> Weapon Mods</li>
                         <li><i class="fas fa-check"></i> Player Teleport</li>
                         <li><i class="fas fa-check"></i> Basic Recoveries</li>
+                        <li><i class="fas fa-check"></i> Limited Amount of Features </li>
                     </ul>
                     <a href="#" class="purchase-btn">GET A FREE KEY</a>
-                    <a href="#" class="purchase-btn">Guide</a>
+                    
+                    
                 </div>
           
                 
                 <div class="pricing-card">
                     <div class="pricing-header">
-                        <h3>ULTIMATE</h3>
+                        <h3>GTA V - ULTIMATE</h3>
                         <div class="price">$24.99 <span>Lifeitme</span></div>
                     </div>
                     <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Battleye Supported</li>
+                        
                         <li><i class="fas fa-check"></i> Lua Api</li>
                         <li><i class="fas fa-check"></i> Full Account Recovery </li>
-                        <li><i class="fas fa-check"></i> Business Manager </li>
+                        <li><i class="fas fa-check"></i> Business & Heist Manager </li>
                         <li><i class="fas fa-check"></i> Outfit & Vehicle Editor </li>
                         <li><i class="fas fa-check"></i> ScriptHookV Integration</li>
                         <li><i class="fas fa-check"></i> Advanced Player Trolling</li>
                         <li><i class="fas fa-check"></i> Early Access to New Features</li>
+                        <li><i class="fas fa-check"></i> Battleye On/Off Supported (GTA V)</li>
+                        
                     </ul>
                     <a href="#" class="purchase-btn">PURCHASE NOW</a>
                 </div>
@@ -625,44 +91,63 @@
         <section class="preview-section" id="preview">
             <div class="preview-container">
                 <div class="section-title">
-                    <h2>MOD PREVIEW</h2>
-                    <p>See our mod menu in action</p>
+                    <h2>PREVIEW</h2>
+                    <p>See our mod menus in action</p>
                 </div>
                 
                 <div class="media-tabs">
-                    <button class="tab-btn active" data-tab="images">Images</button>
+                    <button class="tab-btn active" data-tab="videos">GTA V</button>
+                    <button class="tab-btn" data-tab="RDR2">RDR2</button>
+                    <button class="tab-btn" data-tab="images">Images</button>
                     <button class="tab-btn" data-tab="gifs">GIFs</button>
-                    <button class="tab-btn" data-tab="videos">Videos</button>
+                    
                 </div>
                 
+
+
                 <div class="media-grid">
-                    <div class="media-item">
-                        <img src="https://via.placeholder.com/300x200" alt="Mod Menu Preview 1">
-                        <div class="media-caption">Money Drop Feature</div>
-                    </div>
-                    <div class="media-item">
-                        <img src="https://via.placeholder.com/300x200" alt="Mod Menu Preview 2">
-                        <div class="media-caption">Vehicle Spawner</div>
-                    </div>
-                    <div class="media-item">
-                        <img src="https://via.placeholder.com/300x200" alt="Mod Menu Preview 3">
-                        <div class="media-caption">Player Options</div>
-                    </div>
+
+
                     <div class="media-item">
                         <video controls>
                             <source src="preview.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
-                        <div class="media-caption">Full Menu Walkthrough</div>
+                        <div class="media-caption">Full Menu Walkthrough / Showcase</div>
+                    </div>
+
+                    <div class="media-item">
+                        <video controls>
+                            <source src="preview.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="media-caption">GUI Preview</div>
+                    </div>
+
+
+                    <div class="media-item">
+                        <video controls>
+                            <source src="preview.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="media-caption">Recovery Preview</div>
+                    </div>
+
+
+                    <div class="media-item">
+                        <img src="https://via.placeholder.com/300x200" alt="Preview Picture 1">
+                        <div class="media-caption">Test</div>
                     </div>
                     <div class="media-item">
-                        <img src="https://via.placeholder.com/300x200" alt="Mod Menu Preview 5">
-                        <div class="media-caption">Weapon Mods</div>
+                        <img src="https://via.placeholder.com/300x200" alt="Preview Picture 2">
+                        <div class="media-caption">Vehicle Spawner</div>
                     </div>
                     <div class="media-item">
-                        <img src="https://via.placeholder.com/300x200" alt="Mod Menu Preview 6">
-                        <div class="media-caption">Teleport Options</div>
+                        <img src="https://via.placeholder.com/300x200" alt="Preview Picture 3">
+                        <div class="media-caption">Player Options</div>
                     </div>
+
+
                 </div>
             </div>
         </section>
@@ -671,7 +156,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>RIPTIDE</h3>
-                    <p>The most advanced GTA 5 mod menu with regular updates and premium support.</p>
+                    <p>GTA V & RDR2 </p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-discord"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
