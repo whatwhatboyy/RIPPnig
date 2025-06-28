@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIPTIDE Loader Download</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #121212;
+            color: white;
+        }
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background-color: #1e1e1e;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 28px;
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .download-message {
+            margin: 30px 0;
+            font-size: 20px;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+        .countdown {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            height: 30px;
+            color: #4facfe;
+        }
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .btn-secondary {
+            background: #333;
+        }
+        .btn-help {
+            background: transparent;
+            border: 1px solid #4facfe;
+            color: #4facfe;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+        }
+        .download-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+        .highlight {
+            color: #00f2fe;
+            font-weight: 600;
+        }
+        #redownload-btn {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Replace 'download-icon.png' with your actual PNG file -->
+        <img src="ok.png" alt="Download" class="download-icon">
+        
+        <h1>RIPTIDE Loader Download</h1>
+        
+        <div class="download-message">
+            Your download will begin automatically in <span class="highlight" id="countdown">5</span> seconds...
+        </div>
+        
+        <div class="countdown" id="countdown-animation"></div>
+        
+        <button id="redownload-btn" class="btn btn-primary">Redownload File</button>
+        
+        <div class="button-group">
+            <a href="index.html" target="_blank"class="btn btn-primary">Back to homepage</a>
+            <a href="support.html" target="_blank"class="btn btn-help">Help? Support Page</a>
+        </div>
+    </div>
+
+    <script>
+        let seconds = 5;
+        const countdownElement = document.getElementById('countdown');
+        const countdownAnimation = document.getElementById('countdown-animation');
+        const redownloadBtn = document.getElementById('redownload-btn');
+        let downloadStarted = false;
+        
+        // Function to initiate download
+        function startDownload() {
+            if (!downloadStarted) {
+                downloadStarted = true;
+                // Create invisible iframe for download
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = "YOUR_DOWNLOAD_FILE_URL_HERE";
+                document.body.appendChild(iframe);
+                
+                // Show redownload button
+                redownloadBtn.style.display = 'inline-block';
+            }
+        }
+        
+        // Update countdown every second
+        const countdownInterval = setInterval(function() {
+            seconds--;
+            countdownElement.textContent = seconds;
+            countdownAnimation.textContent = ".".repeat(5 - seconds) + " ".repeat(seconds);
+            
+            if (seconds <= 0) {
+                clearInterval(countdownInterval);
+                startDownload();
+            }
+        }, 1000);
+        
+        // Redownload button handler
+        redownloadBtn.addEventListener('click', function() {
+            startDownload();
+        });
+    </script>
+</body>
+</html>
