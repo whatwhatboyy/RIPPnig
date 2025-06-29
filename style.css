@@ -544,3 +544,79 @@ footer {
 .color-change {
     animation: colorChange 20s infinite;
 }
+
+
+/* Language Selector Styles */
+.language-selector {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.language-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.language-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #1a1a1a;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 4px;
+    overflow: hidden;
+    right: 0;
+    top: 100%;
+}
+
+.language-dropdown.show {
+    display: block;
+}
+
+.language-dropdown a {
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.language-dropdown a:hover {
+    background-color: var(--primary-hover);
+}
+
+.language-dropdown .flag-icon {
+    margin-right: 10px;
+    width: 20px;
+}
+
+/* Hide Google Translate's default UI */
+.goog-te-banner-frame, .goog-te-gadget-icon {
+    display: none !important;
+}
+
+body {
+    top: 0 !important;
+}
+
+.skiptranslate iframe {
+    display: none !important;
+}
