@@ -7,6 +7,115 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Navigation Bar Styles */
+        .nav-container {
+            position: relative;
+            flex-grow: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            white-space: nowrap;
+            padding-bottom: 10px;
+            margin: 0 30px;
+        }
+
+        .nav-links::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-links a, 
+        .nav-dropdown-btn {
+            padding: 10px 15px;
+            margin: 0 5px;
+            text-decoration: none;
+            color: white;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-dropdown:hover .nav-dropdown-btn {
+            color: var(--primary);
+        }
+
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.9);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1000;
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+        }
+
+        .nav-dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            white-space: nowrap;
+        }
+
+        .nav-dropdown-content a:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .nav-dropdown:hover .nav-dropdown-content {
+            display: block;
+        }
+
+        .scroll-arrows {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            cursor: pointer;
+            padding: 0 10px;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-arrows:hover {
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--primary);
+        }
+
+        .scroll-left {
+            left: 0;
+        }
+
+        .scroll-right {
+            right: 0;
+        }
+
+        @media (max-width: 768px) {
+            .scroll-arrows {
+                display: none;
+            }
+            
+            .nav-links {
+                margin: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="color-overlay"></div>
@@ -19,50 +128,74 @@
                     <img src="ok.png" alt="Riptide Logo">
                     <h1>RIPTIDE</h1>
                 </div>
-                <div class="nav-links">
-              <!-- Language Selector -->
-              <div class="language-selector">
-                <button class="language-btn">
-                    <span class="flag-icon flag-icon-us"></span> EN
-                </button>
-                <div class="language-dropdown">
-                    <div class="language-region">Europe</div>
-                    <a href="#" onclick="changeLanguage('en')"><span class="flag-icon flag-icon-gb"></span> English</a>
-                    <a href="#" onclick="changeLanguage('de')"><span class="flag-icon flag-icon-de"></span> German</a>
-                    <a href="#" onclick="changeLanguage('fr')"><span class="flag-icon flag-icon-fr"></span> French</a>
-                    <a href="#" onclick="changeLanguage('es')"><span class="flag-icon flag-icon-es"></span> Spanish</a>
-                    <a href="#" onclick="changeLanguage('it')"><span class="flag-icon flag-icon-it"></span> Italian</a>
-                    <a href="#" onclick="changeLanguage('nl')"><span class="flag-icon flag-icon-nl"></span> Dutch</a>
-                    <a href="#" onclick="changeLanguage('pl')"><span class="flag-icon flag-icon-pl"></span> Polish</a>
-                    <a href="#" onclick="changeLanguage('pt')"><span class="flag-icon flag-icon-pt"></span> Portuguese</a>
-                    <a href="#" onclick="changeLanguage('ru')"><span class="flag-icon flag-icon-ru"></span> Russian</a>
+                <div class="nav-container">
+                    <div class="nav-links">
+                        <!-- Language Selector -->
+                        <div class="language-selector">
+                            <button class="language-btn">
+                                <span class="flag-icon flag-icon-us"></span> EN
+                            </button>
+                            <div class="language-dropdown">
+                                <div class="language-region">Europe</div>
+                                <a href="#" onclick="changeLanguage('en')"><span class="flag-icon flag-icon-gb"></span> English</a>
+                                <a href="#" onclick="changeLanguage('de')"><span class="flag-icon flag-icon-de"></span> German</a>
+                                <a href="#" onclick="changeLanguage('fr')"><span class="flag-icon flag-icon-fr"></span> French</a>
+                                <a href="#" onclick="changeLanguage('es')"><span class="flag-icon flag-icon-es"></span> Spanish</a>
+                                <a href="#" onclick="changeLanguage('it')"><span class="flag-icon flag-icon-it"></span> Italian</a>
+                                <a href="#" onclick="changeLanguage('nl')"><span class="flag-icon flag-icon-nl"></span> Dutch</a>
+                                <a href="#" onclick="changeLanguage('pl')"><span class="flag-icon flag-icon-pl"></span> Polish</a>
+                                <a href="#" onclick="changeLanguage('pt')"><span class="flag-icon flag-icon-pt"></span> Portuguese</a>
+                                <a href="#" onclick="changeLanguage('ru')"><span class="flag-icon flag-icon-ru"></span> Russian</a>
+                                
+                                <div class="language-region">Asia</div>
+                                <a href="#" onclick="changeLanguage('zh-CN')"><span class="flag-icon flag-icon-cn"></span> Chinese (Simplified)</a>
+                                <a href="#" onclick="changeLanguage('ja')"><span class="flag-icon flag-icon-jp"></span> Japanese</a>
+                                <a href="#" onclick="changeLanguage('ko')"><span class="flag-icon flag-icon-kr"></span> Korean</a>
+                                <a href="#" onclick="changeLanguage('th')"><span class="flag-icon flag-icon-th"></span> Thai</a>
+                                <a href="#" onclick="changeLanguage('vi')"><span class="flag-icon flag-icon-vn"></span> Vietnamese</a>
+                                <a href="#" onclick="changeLanguage('id')"><span class="flag-icon flag-icon-id"></span> Indonesian</a>
+                                <a href="#" onclick="changeLanguage('ms')"><span class="flag-icon flag-icon-my"></span> Malay</a>
+                                
+                                <div class="language-region">Middle East</div>
+                                <a href="#" onclick="changeLanguage('ar')"><span class="flag-icon flag-icon-sa"></span> Arabic</a>
+                                <a href="#" onclick="changeLanguage('tr')"><span class="flag-icon flag-icon-tr"></span> Turkish</a>
+                                <a href="#" onclick="changeLanguage('fa')"><span class="flag-icon flag-icon-ir"></span> Persian</a>
+                                
+                                <div class="language-region">Other</div>
+                                <a href="#" onclick="changeLanguage('hi')"><span class="flag-icon flag-icon-in"></span> Hindi</a>
+                                <a href="#" onclick="changeLanguage('fil')"><span class="flag-icon flag-icon-ph"></span> Filipino</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Support Dropdown -->
+                        <div class="nav-dropdown">
+                            <div class="nav-dropdown-btn">Support <i class="fas fa-caret-down"></i></div>
+                            <div class="nav-dropdown-content">
+                                <a href="support.html" target="_blank">Support Page</a>
+                                <a href="#" target="_blank">Discord</a>
+                            </div>
+                        </div>
+                        
+                        <a href="loader.html" target="_blank">Loader</a>
+                        
+                        <!-- Lua API Dropdown -->
+                        <div class="nav-dropdown">
+                            <div class="nav-dropdown-btn">Lua API <i class="fas fa-caret-down"></i></div>
+                            <div class="nav-dropdown-content">
+                                <a href="lua-scripts.html" target="_blank">Lua Scripts</a>
+                                <a href="luaapi.html" target="_blank">Lua API Docs</a>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <div class="language-region">Asia</div>
-                    <a href="#" onclick="changeLanguage('zh-CN')"><span class="flag-icon flag-icon-cn"></span> Chinese (Simplified)</a>
-                    <a href="#" onclick="changeLanguage('ja')"><span class="flag-icon flag-icon-jp"></span> Japanese</a>
-                    <a href="#" onclick="changeLanguage('ko')"><span class="flag-icon flag-icon-kr"></span> Korean</a>
-                    <a href="#" onclick="changeLanguage('th')"><span class="flag-icon flag-icon-th"></span> Thai</a>
-                    <a href="#" onclick="changeLanguage('vi')"><span class="flag-icon flag-icon-vn"></span> Vietnamese</a>
-                    <a href="#" onclick="changeLanguage('id')"><span class="flag-icon flag-icon-id"></span> Indonesian</a>
-                    <a href="#" onclick="changeLanguage('ms')"><span class="flag-icon flag-icon-my"></span> Malay</a>
-                    
-                    <div class="language-region">Middle East</div>
-                    <a href="#" onclick="changeLanguage('ar')"><span class="flag-icon flag-icon-sa"></span> Arabic</a>
-                    <a href="#" onclick="changeLanguage('tr')"><span class="flag-icon flag-icon-tr"></span> Turkish</a>
-                    <a href="#" onclick="changeLanguage('fa')"><span class="flag-icon flag-icon-ir"></span> Persian</a>
-                    
-                    <div class="language-region">Other</div>
-                    <a href="#" onclick="changeLanguage('hi')"><span class="flag-icon flag-icon-in"></span> Hindi</a>
-                    <a href="#" onclick="changeLanguage('fil')"><span class="flag-icon flag-icon-ph"></span> Filipino</a>
-                </div>
-            </div>
-                    <a href="support.html" target="_blank">Support</a>
-                    <a href="loader.html" target="_blank">Loader</a>
-                    <a href="luaapi.html" target="_blank">Lua Api Docs</a>
+                    <!-- Scroll arrows -->
+                    <div class="scroll-arrows scroll-left" onclick="scrollNav(-100)"><i class="fas fa-chevron-left"></i></div>
+                    <div class="scroll-arrows scroll-right" onclick="scrollNav(100)"><i class="fas fa-chevron-right"></i></div>
                 </div>
             </div>
         </header>
         
+        <!-- Rest of your content remains exactly the same -->
         <section class="hero">
             <div class="hero-content">
                 <h2 class="floating">RIPTIDE</h2>
@@ -195,7 +328,7 @@
                     <h3>Support</h3>
                     <ul>
                         <li><a href="loader.html" target="_blank">Loader - Download</a></li>
-                        <li><a href="#" target="_blank">Lua Api docs</a></li>
+                        <li><a href="luaapi.html" target="_blank">Lua Api docs</a></li>
                         <li><a href="support.html" target="_blank">Support</a></li>
                     </ul>
                 </div>
@@ -206,129 +339,148 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-   <!-- Google Translate Script -->
-   <div id="google_translate_element" style="display:none;"></div>
-   <script>
-       // Enhanced Language Translation Functions
-       function changeLanguage(lang) {
-           // Show loading state
-           const btn = document.querySelector('.language-btn');
-           btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i>`;
-           
-           // Load Google Translate script if not already loaded
-           if (typeof google === 'undefined' || !google.translate) {
-               var googleTranslateScript = document.createElement('script');
-               googleTranslateScript.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-               document.head.appendChild(googleTranslateScript);
-               
-               // Store the language to set after the script loads
-               localStorage.setItem('pendingLanguage', lang);
-               return;
-           }
-           
-           // If already loaded, translate immediately
-           translatePage(lang);
-       }
+    <!-- Google Translate Script -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script>
+        // Add new navigation functions
+        function scrollNav(amount) {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.scrollBy({ left: amount, behavior: 'smooth' });
+        }
+        
+        function updateScrollArrows() {
+            const navLinks = document.querySelector('.nav-links');
+            const leftArrow = document.querySelector('.scroll-left');
+            const rightArrow = document.querySelector('.scroll-right');
+            
+            leftArrow.style.display = navLinks.scrollLeft > 0 ? 'flex' : 'none';
+            rightArrow.style.display = navLinks.scrollLeft < (navLinks.scrollWidth - navLinks.clientWidth) ? 'flex' : 'none';
+        }
+        
+        // Initialize navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks) {
+                navLinks.addEventListener('scroll', updateScrollArrows);
+                updateScrollArrows();
+            }
+            
+            // Your existing DOMContentLoaded code...
+            const languageBtn = document.querySelector('.language-btn');
+            const languageDropdown = document.querySelector('.language-dropdown');
+            
+            languageBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                languageDropdown.classList.toggle('show');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function() {
+                languageDropdown.classList.remove('show');
+            });
+            
+            // Rest of your existing initialization...
+        });
 
-       function translatePage(lang) {
-           // First try to use the new API
-           if (google.translate.translatePage) {
-               google.translate.translatePage('en', lang, function() {
-                   updateLanguageButton(lang);
-                   localStorage.setItem('selectedLanguage', lang);
-               });
-           } 
-           // Fallback to old API
-           else if (typeof googleTranslateElementInit !== 'undefined') {
-               var selectField = document.querySelector("#google_translate_element select.goog-te-combo");
-               if (selectField) {
-                   selectField.value = lang;
-                   selectField.dispatchEvent(new Event('change'));
-                   updateLanguageButton(lang);
-                   localStorage.setItem('selectedLanguage', lang);
-               }
-           }
-       }
+        // Rest of your existing JavaScript remains exactly the same...
+        // Enhanced Language Translation Functions
+        function changeLanguage(lang) {
+            // Show loading state
+            const btn = document.querySelector('.language-btn');
+            btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i>`;
+            
+            // Load Google Translate script if not already loaded
+            if (typeof google === 'undefined' || !google.translate) {
+                var googleTranslateScript = document.createElement('script');
+                googleTranslateScript.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+                document.head.appendChild(googleTranslateScript);
+                
+                // Store the language to set after the script loads
+                localStorage.setItem('pendingLanguage', lang);
+                return;
+            }
+            
+            // If already loaded, translate immediately
+            translatePage(lang);
+        }
 
-       // Update the language button with flag and code
-       function updateLanguageButton(lang) {
-           const btn = document.querySelector('.language-btn');
-           const langData = getLanguageData(lang);
-           btn.innerHTML = `<span class="flag-icon ${langData.flagClass}"></span> ${langData.code}`;
-       }
+        function translatePage(lang) {
+            // First try to use the new API
+            if (google.translate.translatePage) {
+                google.translate.translatePage('en', lang, function() {
+                    updateLanguageButton(lang);
+                    localStorage.setItem('selectedLanguage', lang);
+                });
+            } 
+            // Fallback to old API
+            else if (typeof googleTranslateElementInit !== 'undefined') {
+                var selectField = document.querySelector("#google_translate_element select.goog-te-combo");
+                if (selectField) {
+                    selectField.value = lang;
+                    selectField.dispatchEvent(new Event('change'));
+                    updateLanguageButton(lang);
+                    localStorage.setItem('selectedLanguage', lang);
+                }
+            }
+        }
 
-       // Get language data (flag and code)
-       function getLanguageData(lang) {
-           const languages = {
-               'en': { flagClass: 'flag-icon-gb', code: 'EN' },
-               'de': { flagClass: 'flag-icon-de', code: 'DE' },
-               'fr': { flagClass: 'flag-icon-fr', code: 'FR' },
-               'es': { flagClass: 'flag-icon-es', code: 'ES' },
-               'it': { flagClass: 'flag-icon-it', code: 'IT' },
-               'nl': { flagClass: 'flag-icon-nl', code: 'NL' },
-               'pl': { flagClass: 'flag-icon-pl', code: 'PL' },
-               'pt': { flagClass: 'flag-icon-pt', code: 'PT' },
-               'ru': { flagClass: 'flag-icon-ru', code: 'RU' },
-               'zh-CN': { flagClass: 'flag-icon-cn', code: '中文' },
-               'ja': { flagClass: 'flag-icon-jp', code: '日本語' },
-               'ko': { flagClass: 'flag-icon-kr', code: '한국어' },
-               'th': { flagClass: 'flag-icon-th', code: 'ไทย' },
-               'vi': { flagClass: 'flag-icon-vn', code: 'VN' },
-               'id': { flagClass: 'flag-icon-id', code: 'ID' },
-               'ms': { flagClass: 'flag-icon-my', code: 'MS' },
-               'ar': { flagClass: 'flag-icon-sa', code: 'العربية' },
-               'tr': { flagClass: 'flag-icon-tr', code: 'TR' },
-               'fa': { flagClass: 'flag-icon-ir', code: 'فارسی' },
-               'hi': { flagClass: 'flag-icon-in', code: 'हिंदी' },
-               'fil': { flagClass: 'flag-icon-ph', code: 'FIL' }
-           };
-           
-           return languages[lang] || languages['en'];
-       }
+        // Update the language button with flag and code
+        function updateLanguageButton(lang) {
+            const btn = document.querySelector('.language-btn');
+            const langData = getLanguageData(lang);
+            btn.innerHTML = `<span class="flag-icon ${langData.flagClass}"></span> ${langData.code}`;
+        }
 
-       // Google Translate callback
-       function googleTranslateElementInit() {
-           new google.translate.TranslateElement({
-               pageLanguage: 'en',
-               includedLanguages: 'en,de,fr,es,it,nl,pl,pt,ru,zh-CN,ja,ko,th,vi,id,ms,ar,tr,fa,hi,fil',
-               layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-           }, 'google_translate_element');
-           
-           // Check if there's a pending language to set
-           const pendingLang = localStorage.getItem('pendingLanguage');
-           if (pendingLang) {
-               translatePage(pendingLang);
-               localStorage.removeItem('pendingLanguage');
-           }
-           
-           // Restore selected language if exists
-           const savedLang = localStorage.getItem('selectedLanguage');
-           if (savedLang) {
-               translatePage(savedLang);
-           }
-       }
+        // Get language data (flag and code)
+        function getLanguageData(lang) {
+            const languages = {
+                'en': { flagClass: 'flag-icon-gb', code: 'EN' },
+                'de': { flagClass: 'flag-icon-de', code: 'DE' },
+                'fr': { flagClass: 'flag-icon-fr', code: 'FR' },
+                'es': { flagClass: 'flag-icon-es', code: 'ES' },
+                'it': { flagClass: 'flag-icon-it', code: 'IT' },
+                'nl': { flagClass: 'flag-icon-nl', code: 'NL' },
+                'pl': { flagClass: 'flag-icon-pl', code: 'PL' },
+                'pt': { flagClass: 'flag-icon-pt', code: 'PT' },
+                'ru': { flagClass: 'flag-icon-ru', code: 'RU' },
+                'zh-CN': { flagClass: 'flag-icon-cn', code: '中文' },
+                'ja': { flagClass: 'flag-icon-jp', code: '日本語' },
+                'ko': { flagClass: 'flag-icon-kr', code: '한국어' },
+                'th': { flagClass: 'flag-icon-th', code: 'ไทย' },
+                'vi': { flagClass: 'flag-icon-vn', code: 'VN' },
+                'id': { flagClass: 'flag-icon-id', code: 'ID' },
+                'ms': { flagClass: 'flag-icon-my', code: 'MS' },
+                'ar': { flagClass: 'flag-icon-sa', code: 'العربية' },
+                'tr': { flagClass: 'flag-icon-tr', code: 'TR' },
+                'fa': { flagClass: 'flag-icon-ir', code: 'فارسی' },
+                'hi': { flagClass: 'flag-icon-in', code: 'हिंदी' },
+                'fil': { flagClass: 'flag-icon-ph', code: 'FIL' }
+            };
+            
+            return languages[lang] || languages['en'];
+        }
 
-       // Toggle language dropdown
-       document.addEventListener('DOMContentLoaded', function() {
-           const languageBtn = document.querySelector('.language-btn');
-           const languageDropdown = document.querySelector('.language-dropdown');
-           
-           languageBtn.addEventListener('click', function(e) {
-               e.stopPropagation();
-               languageDropdown.classList.toggle('show');
-           });
-           
-           // Close dropdown when clicking outside
-           document.addEventListener('click', function() {
-               languageDropdown.classList.remove('show');
-           });
-           
-           // Restore selected language if exists
-           const savedLang = localStorage.getItem('selectedLanguage');
-           if (savedLang) {
-               updateLanguageButton(savedLang);
-           }
-       });
+        // Google Translate callback
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,de,fr,es,it,nl,pl,pt,ru,zh-CN,ja,ko,th,vi,id,ms,ar,tr,fa,hi,fil',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+            
+            // Check if there's a pending language to set
+            const pendingLang = localStorage.getItem('pendingLanguage');
+            if (pendingLang) {
+                translatePage(pendingLang);
+                localStorage.removeItem('pendingLanguage');
+            }
+            
+            // Restore selected language if exists
+            const savedLang = localStorage.getItem('selectedLanguage');
+            if (savedLang) {
+                translatePage(savedLang);
+            }
+        }
 
         // Color schemes for RIPTIDE theme
         const colorSchemes = [
