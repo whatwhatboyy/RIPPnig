@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIPTIDE | PC Mod Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="color-overlay"></div>
+    <div class="particles" id="particles-js"></div>
+    
+    <div class="content-wrapper">
+        <header>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="ok.png" alt="Riptide Logo">
+                    <h1>RIPTIDE</h1>
+                </div>
+                <div class="nav-links">
+              <!-- Language Selector -->
+              <div class="language-selector">
+                <button class="language-btn">
+                    <span class="flag-icon flag-icon-us"></span> EN
+                </button>
+                <div class="language-dropdown">
+                    <div class="language-region">Europe</div>
+                    <a href="#" onclick="changeLanguage('en')"><span class="flag-icon flag-icon-gb"></span> English</a>
+                    <a href="#" onclick="changeLanguage('de')"><span class="flag-icon flag-icon-de"></span> German</a>
+                    <a href="#" onclick="changeLanguage('fr')"><span class="flag-icon flag-icon-fr"></span> French</a>
+                    <a href="#" onclick="changeLanguage('es')"><span class="flag-icon flag-icon-es"></span> Spanish</a>
+                    <a href="#" onclick="changeLanguage('it')"><span class="flag-icon flag-icon-it"></span> Italian</a>
+                    <a href="#" onclick="changeLanguage('nl')"><span class="flag-icon flag-icon-nl"></span> Dutch</a>
+                    <a href="#" onclick="changeLanguage('pl')"><span class="flag-icon flag-icon-pl"></span> Polish</a>
+                    <a href="#" onclick="changeLanguage('pt')"><span class="flag-icon flag-icon-pt"></span> Portuguese</a>
+                    <a href="#" onclick="changeLanguage('ru')"><span class="flag-icon flag-icon-ru"></span> Russian</a>
+                    
+                    <div class="language-region">Asia</div>
+                    <a href="#" onclick="changeLanguage('zh-CN')"><span class="flag-icon flag-icon-cn"></span> Chinese (Simplified)</a>
+                    <a href="#" onclick="changeLanguage('ja')"><span class="flag-icon flag-icon-jp"></span> Japanese</a>
+                    <a href="#" onclick="changeLanguage('ko')"><span class="flag-icon flag-icon-kr"></span> Korean</a>
+                    <a href="#" onclick="changeLanguage('th')"><span class="flag-icon flag-icon-th"></span> Thai</a>
+                    <a href="#" onclick="changeLanguage('vi')"><span class="flag-icon flag-icon-vn"></span> Vietnamese</a>
+                    <a href="#" onclick="changeLanguage('id')"><span class="flag-icon flag-icon-id"></span> Indonesian</a>
+                    <a href="#" onclick="changeLanguage('ms')"><span class="flag-icon flag-icon-my"></span> Malay</a>
+                    
+                    <div class="language-region">Middle East</div>
+                    <a href="#" onclick="changeLanguage('ar')"><span class="flag-icon flag-icon-sa"></span> Arabic</a>
+                    <a href="#" onclick="changeLanguage('tr')"><span class="flag-icon flag-icon-tr"></span> Turkish</a>
+                    <a href="#" onclick="changeLanguage('fa')"><span class="flag-icon flag-icon-ir"></span> Persian</a>
+                    
+                    <div class="language-region">Other</div>
+                    <a href="#" onclick="changeLanguage('hi')"><span class="flag-icon flag-icon-in"></span> Hindi</a>
+                    <a href="#" onclick="changeLanguage('fil')"><span class="flag-icon flag-icon-ph"></span> Filipino</a>
+                </div>
+            </div>
+                    <a href="support.html" target="_blank">Support</a>
+                    <a href="loader.html" target="_blank">Loader</a>
+                    <a href="#support" target="_blank">Lua Api Docs</a>
+                </div>
+            </div>
+        </header>
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h2 class="floating">RIPTIDE</h2>
+                <p>The Most Advanced and Undetected Battle Eye Mod Menu For Grand Theft Auto V with regular updates and premium features.</p>
+                
+                <!-- Fact of the Day Section -->
+                <div class="fact-container">
+                    <div class="fact-box">
+                        <img id="fact-meme" src="ok.png" alt=" ">
+                        <div class="fact-content">
+                            <h3>FACT OF THE DAY</h3>
+                            <p id="fact-text">Loading interesting fact...</p>
+                            <button id="new-fact-btn" class="cta-button">NEW FACT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="pricing" id="pricing">
+            <div class="section-title">
+                <h2>Packages</h2>
+                <p>Choose the Packages that fits your needs</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>GTA V - FREE </h3>
+                        <div class="price">$0.00 <span>/1 day</span></div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Lua Api</li>
+                        <li><i class="fas fa-check"></i> Self Mods</li>
+                        <li><i class="fas fa-check"></i> Weapon Mods</li>
+                        <li><i class="fas fa-check"></i> Player Teleport</li>
+                        <li><i class="fas fa-check"></i> Basic Recoveries</li>
+                        <li><i class="fas fa-check"></i> Limited Amount of Features </li>
+                        <li><i class="fas fa-check"></i> Battleye Off Supported (GTA V & GTA ONLINE)</li>
+                        <li><i class="fas fa-check"></i> Game Version: GTA V ENHANCED</li>
+                    </ul>
+                    <a href="#" target="_blank" class="purchase-btn">GET A FREE KEY</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>GTA V - ULTIMATE</h3>
+                        <div class="price">$24.99 <span>Lifeitme</span></div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Lua Api</li>
+                        <li><i class="fas fa-check"></i> Full Account Recovery </li>
+                        <li><i class="fas fa-check"></i> Business & Heist Manager </li>
+                        <li><i class="fas fa-check"></i> Outfit & Vehicle Editor </li>
+                        <li><i class="fas fa-check"></i> ScriptHookV Integration</li>
+                        <li><i class="fas fa-check"></i> Advanced Player Trolling</li>
+                        <li><i class="fas fa-check"></i> Early Access to New Features</li>
+                        <li><i class="fas fa-check"></i> Battleye On/Off Supported (GTA V & GTA ONLINE)</li>
+                        <li><i class="fas fa-check"></i> Game Version: GTA V ENHANCED</li>
+                    </ul>
+                    <a href="#" target="_blank" class="purchase-btn">PURCHASE NOW</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="preview-section" id="preview">
+            <div class="preview-container">
+                <div class="section-title">
+                    <h2>PREVIEW</h2>
+                    <p>See our mod menus in action</p>
+                </div>
+                
+                <div class="media-tabs">
+                    <button class="tab-btn active" data-tab="videos">GTA V</button>
+                    <button class="tab-btn" data-tab="RDR2">RDR2</button>
+                    <button class="tab-btn" data-tab="images">Images</button>
+                    <button class="tab-btn" data-tab="gifs">GIFs</button>
+                </div>
+                
+                <div class="media-grid">
+                    <div class="media-item">
+                        <video controls>
+                            <source src="preview.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="media-caption">Full Menu Walkthrough / Showcase</div>
+                    </div>
+                    <div class="media-item">
+                        <video controls>
+                            <source src="preview.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="media-caption">GUI Preview</div>
+                    </div>
+                    <div class="media-item">
+                        <video controls>
+                            <source src="preview.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="media-caption">Recovery Preview</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="https://via.placeholder.com/300x200" alt="Preview Picture 1">
+                        <div class="media-caption">Test</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="https://via.placeholder.com/300x200" alt="Preview Picture 2">
+                        <div class="media-caption">Vehicle Spawner</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="https://via.placeholder.com/300x200" alt="Preview Picture 3">
+                        <div class="media-caption">Player Options</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer id="support">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>RIPTIDE</h3>
+                    <p>GTA V & RDR2 </p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="loader.html" target="_blank">Loader - Download</a></li>
+                        <li><a href="#" target="_blank">Lua Api docs</a></li>
+                        <li><a href="support.html" target="_blank">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+   <!-- Google Translate Script -->
+   <div id="google_translate_element" style="display:none;"></div>
+   <script>
+       // Enhanced Language Translation Functions
+       function changeLanguage(lang) {
+           // Show loading state
+           const btn = document.querySelector('.language-btn');
+           btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i>`;
+           
+           // Load Google Translate script if not already loaded
+           if (typeof google === 'undefined' || !google.translate) {
+               var googleTranslateScript = document.createElement('script');
+               googleTranslateScript.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+               document.head.appendChild(googleTranslateScript);
+               
+               // Store the language to set after the script loads
+               localStorage.setItem('pendingLanguage', lang);
+               return;
+           }
+           
+           // If already loaded, translate immediately
+           translatePage(lang);
+       }
+
+       function translatePage(lang) {
+           // First try to use the new API
+           if (google.translate.translatePage) {
+               google.translate.translatePage('en', lang, function() {
+                   updateLanguageButton(lang);
+                   localStorage.setItem('selectedLanguage', lang);
+               });
+           } 
+           // Fallback to old API
+           else if (typeof googleTranslateElementInit !== 'undefined') {
+               var selectField = document.querySelector("#google_translate_element select.goog-te-combo");
+               if (selectField) {
+                   selectField.value = lang;
+                   selectField.dispatchEvent(new Event('change'));
+                   updateLanguageButton(lang);
+                   localStorage.setItem('selectedLanguage', lang);
+               }
+           }
+       }
+
+       // Update the language button with flag and code
+       function updateLanguageButton(lang) {
+           const btn = document.querySelector('.language-btn');
+           const langData = getLanguageData(lang);
+           btn.innerHTML = `<span class="flag-icon ${langData.flagClass}"></span> ${langData.code}`;
+       }
+
+       // Get language data (flag and code)
+       function getLanguageData(lang) {
+           const languages = {
+               'en': { flagClass: 'flag-icon-gb', code: 'EN' },
+               'de': { flagClass: 'flag-icon-de', code: 'DE' },
+               'fr': { flagClass: 'flag-icon-fr', code: 'FR' },
+               'es': { flagClass: 'flag-icon-es', code: 'ES' },
+               'it': { flagClass: 'flag-icon-it', code: 'IT' },
+               'nl': { flagClass: 'flag-icon-nl', code: 'NL' },
+               'pl': { flagClass: 'flag-icon-pl', code: 'PL' },
+               'pt': { flagClass: 'flag-icon-pt', code: 'PT' },
+               'ru': { flagClass: 'flag-icon-ru', code: 'RU' },
+               'zh-CN': { flagClass: 'flag-icon-cn', code: '中文' },
+               'ja': { flagClass: 'flag-icon-jp', code: '日本語' },
+               'ko': { flagClass: 'flag-icon-kr', code: '한국어' },
+               'th': { flagClass: 'flag-icon-th', code: 'ไทย' },
+               'vi': { flagClass: 'flag-icon-vn', code: 'VN' },
+               'id': { flagClass: 'flag-icon-id', code: 'ID' },
+               'ms': { flagClass: 'flag-icon-my', code: 'MS' },
+               'ar': { flagClass: 'flag-icon-sa', code: 'العربية' },
+               'tr': { flagClass: 'flag-icon-tr', code: 'TR' },
+               'fa': { flagClass: 'flag-icon-ir', code: 'فارسی' },
+               'hi': { flagClass: 'flag-icon-in', code: 'हिंदी' },
+               'fil': { flagClass: 'flag-icon-ph', code: 'FIL' }
+           };
+           
+           return languages[lang] || languages['en'];
+       }
+
+       // Google Translate callback
+       function googleTranslateElementInit() {
+           new google.translate.TranslateElement({
+               pageLanguage: 'en',
+               includedLanguages: 'en,de,fr,es,it,nl,pl,pt,ru,zh-CN,ja,ko,th,vi,id,ms,ar,tr,fa,hi,fil',
+               layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+           }, 'google_translate_element');
+           
+           // Check if there's a pending language to set
+           const pendingLang = localStorage.getItem('pendingLanguage');
+           if (pendingLang) {
+               translatePage(pendingLang);
+               localStorage.removeItem('pendingLanguage');
+           }
+           
+           // Restore selected language if exists
+           const savedLang = localStorage.getItem('selectedLanguage');
+           if (savedLang) {
+               translatePage(savedLang);
+           }
+       }
+
+       // Toggle language dropdown
+       document.addEventListener('DOMContentLoaded', function() {
+           const languageBtn = document.querySelector('.language-btn');
+           const languageDropdown = document.querySelector('.language-dropdown');
+           
+           languageBtn.addEventListener('click', function(e) {
+               e.stopPropagation();
+               languageDropdown.classList.toggle('show');
+           });
+           
+           // Close dropdown when clicking outside
+           document.addEventListener('click', function() {
+               languageDropdown.classList.remove('show');
+           });
+           
+           // Restore selected language if exists
+           const savedLang = localStorage.getItem('selectedLanguage');
+           if (savedLang) {
+               updateLanguageButton(savedLang);
+           }
+       });
+
+        // Color schemes for RIPTIDE theme
+        const colorSchemes = [
+            {
+                primary: '#00a8ff',
+                accent: '#e84118',
+                primarySoft: 'rgba(0, 168, 255, 0.3)',
+                accentSoft: 'rgba(232, 65, 24, 0.3)',
+                primaryShadow: 'rgba(0, 168, 255, 0.4)',
+                primaryShadowHover: 'rgba(0, 168, 255, 0.6)',
+                primaryBorder: 'rgba(0, 168, 255, 0.2)',
+                primaryHover: 'rgba(0, 168, 255, 0.4)'
+            },
+            {
+                primary: '#9c88ff',
+                accent: '#fbc531',
+                primarySoft: 'rgba(156, 136, 255, 0.3)',
+                accentSoft: 'rgba(251, 197, 49, 0.3)',
+                primaryShadow: 'rgba(156, 136, 255, 0.4)',
+                primaryShadowHover: 'rgba(156, 136, 255, 0.6)',
+                primaryBorder: 'rgba(156, 136, 255, 0.2)',
+                primaryHover: 'rgba(156, 136, 255, 0.4)'
+            },
+            {
+                primary: '#4cd137',
+                accent: '#e84118',
+                primarySoft: 'rgba(76, 209, 55, 0.3)',
+                accentSoft: 'rgba(232, 65, 24, 0.3)',
+                primaryShadow: 'rgba(76, 209, 55, 0.4)',
+                primaryShadowHover: 'rgba(76, 209, 55, 0.6)',
+                primaryBorder: 'rgba(76, 209, 55, 0.2)',
+                primaryHover: 'rgba(76, 209, 55, 0.4)'
+            },
+            {
+                primary: '#fbc531',
+                accent: '#00a8ff',
+                primarySoft: 'rgba(251, 197, 49, 0.3)',
+                accentSoft: 'rgba(0, 168, 255, 0.3)',
+                primaryShadow: 'rgba(251, 197, 49, 0.4)',
+                primaryShadowHover: 'rgba(251, 197, 49, 0.6)',
+                primaryBorder: 'rgba(251, 197, 49, 0.2)',
+                primaryHover: 'rgba(251, 197, 49, 0.4)'
+            },
+            {
+                primary: '#e84118',
+                accent: '#9c88ff',
+                primarySoft: 'rgba(232, 65, 24, 0.3)',
+                accentSoft: 'rgba(156, 136, 255, 0.3)',
+                primaryShadow: 'rgba(232, 65, 24, 0.4)',
+                primaryShadowHover: 'rgba(232, 65, 24, 0.6)',
+                primaryBorder: 'rgba(232, 65, 24, 0.2)',
+                primaryHover: 'rgba(232, 65, 24, 0.4)'
+            }
+        ];
+
+        function applyRandomColorScheme() {
+            const randomScheme = colorSchemes[Math.floor(Math.random() * colorSchemes.length)];
+            
+            document.documentElement.style.setProperty('--primary', randomScheme.primary);
+            document.documentElement.style.setProperty('--accent', randomScheme.accent);
+            document.documentElement.style.setProperty('--primary-soft', randomScheme.primarySoft);
+            document.documentElement.style.setProperty('--accent-soft', randomScheme.accentSoft);
+            document.documentElement.style.setProperty('--primary-shadow', randomScheme.primaryShadow);
+            document.documentElement.style.setProperty('--primary-shadow-hover', randomScheme.primaryShadowHover);
+            document.documentElement.style.setProperty('--primary-border', randomScheme.primaryBorder);
+            document.documentElement.style.setProperty('--primary-hover', randomScheme.primaryHover);
+            
+            if (window.pJSDom && window.pJSDom.length > 0) {
+                window.pJSDom[0].pJS.particles.color.value = randomScheme.primary;
+                window.pJSDom[0].pJS.particles.line_linked.color = randomScheme.primary;
+                window.pJSDom[0].pJS.fn.particlesRefresh();
+            }
+        }
+
+        // Initialize particles.js
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#00a8ff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#00a8ff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+        
+        document.addEventListener('DOMContentLoaded', applyRandomColorScheme);
+        
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const mediaItems = document.querySelectorAll('.media-item');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const tab = btn.getAttribute('data-tab');
+                mediaItems.forEach(item => {
+                    if (tab === 'images') {
+                        item.style.display = item.querySelector('img') ? 'block' : 'none';
+                    } else if (tab === 'gifs') {
+                        item.style.display = 'none';
+                    } else if (tab === 'videos') {
+                        item.style.display = item.querySelector('video') ? 'block' : 'none';
+                    }
+                });
+            });
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
