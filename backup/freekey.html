@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RIPTIDE FREE Key</title>
-    <link rel="icon" type="image/png" href="images/freeuser.png">
+    <link rel="icon" type="image/png" href="freeuser.png">
 
     <style>
         body {
@@ -73,22 +73,10 @@
             max-width: 90%;
             box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
             transition: transform 0.2s ease;
-            position: relative;
         }
 
         .key-box:hover {
             transform: scale(1.05);
-        }
-
-        .key-text {
-            filter: blur(5px);
-            transition: filter 0.3s ease;
-        }
-
-        .key-box:hover .key-text,
-        .key-box:active .key-text,
-        .key-box:focus .key-text {
-            filter: blur(0);
         }
 
         .copy-notice {
@@ -146,13 +134,13 @@
     <div class="container">
         <!-- Image Box -->
         <div class="image-box">
-            <img src="images/freeuser.png" alt="RIPTIDE Image">
+            <img src="freeuser.png" alt="RIPTIDE Image">
         </div>
 
         <h1>RIPTIDE (Free Version)</h1>
 
         <div class="key-box" id="keyBox" title="Click to copy">
-            <span class="key-text">RIPTIDE-1234-5678-KEY</span>
+            RIPTIDE-1234-5678-KEY
         </div>
 
         <div class="copy-notice" id="copyNotice">Key copied to clipboard!</div>
@@ -169,7 +157,7 @@
     <script>
         const keyBox = document.getElementById('keyBox');
         const copyNotice = document.getElementById('copyNotice');
-        const key = keyBox.querySelector('.key-text').textContent;
+        const key = keyBox.textContent;
 
         function copyKey() {
             navigator.clipboard.writeText(key).then(() => {
