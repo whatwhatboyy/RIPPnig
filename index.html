@@ -250,7 +250,7 @@
                     <h4>Card & Digital Wallets</h4>
                     <p>Instant Delivery</p>
                     <a href="https://nenyooo.myshopify.com/products/riptide-ultimate-lifetime" target="_blank" class="payment-btn">
-                        <i class="fas fa-shopping-cart"></i> Continue to Shopify
+                        <i class="fas fa-shopping-cart"></i> Pay By Card
                     </a>
                 </div>
                 
@@ -262,7 +262,8 @@
                     <h4>Crypto Payments</h4>
                     <p>Instant Delivery</p>
                     <button class="payment-btn crypto-btn">
-                        <i class="fas fa-coins"></i> Pay with Crypto
+                        <a href="https://dizzgaming.selly.store/product/422f13f4" target="_blank"></a>
+                        <i class="fas fa-coins"></i> Pay with Crypto (20%)
                     </button>
                 </div>
                 
@@ -708,22 +709,21 @@
                 }
             });
             
-            // Add click handlers for the payment buttons
-            const cryptoBtn = document.querySelector('.crypto-btn');
-            if (cryptoBtn) {
-                cryptoBtn.addEventListener('click', function() {
-                    // Add your crypto payment handler here
-                    alert('Crypto payment option selected - implement your handler here');
-                });
-            }
-            
-            const altBtn = document.querySelector('.alt-btn');
-            if (altBtn) {
-                altBtn.addEventListener('click', function() {
-                    // Add your alternative payment handler here
-                    alert('Alternative payment option selected - implement your handler here');
-                });
-            }
+     // Add click handlers for the payment buttons
+const cryptoBtn = document.querySelector('.crypto-btn');
+if (cryptoBtn) {
+    cryptoBtn.addEventListener('click', function() {
+        window.open('https://dizzgaming.selly.store/product/422f13f4', '_blank');
+    });
+}
+
+const altBtn = document.querySelector('.alt-btn');
+if (altBtn) {
+    altBtn.addEventListener('click', function() {
+        window.open('https://discord.gg/ZfJUMxbANh', '_blank');
+    });
+}
+
         });
     </script>
     <style>
