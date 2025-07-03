@@ -139,7 +139,7 @@
                             <button class="preview-gui-btn" onclick="openGallery()">Preview GUI</button>
                         </li>
                     </ul>
-                    <a href="https://nenyooo.myshopify.com/products/riptide-ultimate-lifetime" target="_blank" class="purchase-btn" id="purchaseBtn">PURCHASE NOW</a>
+                    <a href="https://nenyooo.myshopify.com/products/riptide-ultimate-lifetime" target="_blank" class="purchase-btn">PURCHASE NOW</a>
                 </div>
             </div>
         </section>
@@ -231,67 +231,19 @@
         </div>
     </div>
 
-    <!-- Enhanced Payment Method Modal -->
-    <div id="paymentModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-header">
-                <i class="fas fa-credit-card"></i>
-                <h3>Select Payment Method</h3>
-            </div>
-            <div class="payment-options">
-                <div class="payment-method">
-                    <div class="payment-icon">
-                        <i class="fab fa-cc-visa"></i>
-                        <i class="fab fa-cc-mastercard"></i>
-                        <i class="fab fa-cc-apple-pay"></i>
-                        <i class="fab fa-google-pay"></i>
-                    </div>
-                    <h4>Card & Digital Wallets</h4>
-                    <p>Instant Delivery</p>
-                    <a href="https://nenyooo.myshopify.com/products/riptide-ultimate-lifetime" target="_blank" class="payment-btn">
-                        <i class="fas fa-shopping-cart"></i> Continue to Shopify
-                    </a>
-                </div>
-                
-                <div class="payment-method">
-                    <div class="payment-icon">
-                        <i class="fab fa-bitcoin"></i>
-                        <i class="fab fa-ethereum"></i>
-                    </div>
-                    <h4>Crypto Payments</h4>
-                    <p>Instant Delivery</p>
-                    <button class="payment-btn crypto-btn">
-                        <i class="fas fa-coins"></i> Pay with Crypto
-                    </button>
-                </div>
-                
-                <div class="payment-method">
-                    <div class="payment-icon">
-                        <i class="fab fa-paypal"></i>
-                        <i class="fas fa-exchange-alt"></i>
-                        <i class="fas fa-ticket-alt"></i>
-                    </div>
-                    <h4>Alternative Methods</h4>
-                    <p>PayPal F&F | Skrill | Paysafe | Steam Gift Card</p>
-                    <button class="payment-btn alt-btn">
-                        <i class="fas fa-ticket-alt"></i> Open Support Ticket
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Google Translate Element -->
     <div id="google_translate_element" style="display:none;"></div>
     
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
  
-    <script>
+
+<script>
+
         // Gallery functionality
         const galleryImages = [
             "images/LISTui.png",
             "images/CLICKui.png"
+            
         ];
 
         let currentImageIndex = 0;
@@ -317,6 +269,20 @@
             if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
             document.getElementById('galleryImg').src = galleryImages[currentImageIndex];
         }
+
+        // Close gallery with ESC key or click outside
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('galleryPopup').classList.contains('active')) {
+                closeGallery();
+            }
+        });
+
+        // Close gallery when clicking on the overlay
+        document.getElementById('galleryPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGallery();
+            }
+        });
 
         // Enhanced Language Translation Functions
         function changeLanguage(lang) {
@@ -655,330 +621,6 @@
                 });
             });
         });
-
-        // Payment Modal functionality with viewport adjustments
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById("paymentModal");
-            const btn = document.getElementById("purchaseBtn");
-            const span = document.querySelector(".modal .close");
-            
-            function adjustModalPosition() {
-                const modalContent = document.querySelector('.modal-content');
-                const viewportHeight = window.innerHeight;
-                const modalHeight = modalContent.offsetHeight;
-                
-                if (modalHeight > viewportHeight * 0.9) {
-                    modalContent.style.margin = '20px auto';
-                    modalContent.style.maxHeight = 'calc(100vh - 40px)';
-                } else {
-                    modalContent.style.margin = '5% auto';
-                    modalContent.style.maxHeight = '90vh';
-                }
-            }
-            
-            if (btn) {
-                btn.onclick = function(e) {
-                    e.preventDefault();
-                    modal.style.display = "block";
-                    document.body.style.overflow = 'hidden';
-                    adjustModalPosition();
-                }
-            }
-            
-            if (span) {
-                span.onclick = function() {
-                    modal.style.display = "none";
-                    document.body.style.overflow = '';
-                }
-            }
-            
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                    document.body.style.overflow = '';
-                }
-            }
-            
-            window.addEventListener('resize', adjustModalPosition);
-            
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.style.display === 'block') {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = '';
-                }
-            });
-            
-            // Add click handlers for the payment buttons
-            const cryptoBtn = document.querySelector('.crypto-btn');
-            if (cryptoBtn) {
-                cryptoBtn.addEventListener('click', function() {
-                    // Add your crypto payment handler here
-                    alert('Crypto payment option selected - implement your handler here');
-                });
-            }
-            
-            const altBtn = document.querySelector('.alt-btn');
-            if (altBtn) {
-                altBtn.addEventListener('click', function() {
-                    // Add your alternative payment handler here
-                    alert('Alternative payment option selected - implement your handler here');
-                });
-            }
-        });
     </script>
-    <style>
-        /* Payment Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            animation: fadeIn 0.3s ease-out;
-            overflow-y: auto;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background-color: #1a1a1a;
-            margin: 5% auto;
-            padding: 25px;
-            border: 1px solid #333;
-            width: 90%;
-            max-width: 500px;
-            max-height: 90vh;
-            border-radius: 12px;
-            color: white;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transform: translateY(-20px);
-            opacity: 0;
-            animation: slideUp 0.3s ease-out 0.1s forwards;
-            overflow-y: auto;
-        }
-
-        @keyframes slideUp {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-header {
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .modal-header i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .modal-header h3 {
-            color: var(--primary);
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .close {
-            color: #aaa;
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-            z-index: 10;
-        }
-
-        .close:hover {
-            color: white;
-            transform: scale(1.2);
-        }
-
-        .payment-options {
-            margin-top: 20px;
-        }
-
-        .payment-method {
-            margin-bottom: 25px;
-            padding: 20px;
-            background-color: #2a2a2a;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .payment-method:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .payment-method::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-            pointer-events: none;
-        }
-
-        .payment-icon {
-            margin-bottom: 15px;
-            font-size: 1.8rem;
-            color: var(--primary);
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .payment-icon i {
-            transition: all 0.3s;
-        }
-
-        .payment-icon i:hover {
-            transform: scale(1.2);
-            color: white;
-        }
-
-        .payment-method h4 {
-            margin: 0 0 5px 0;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 500;
-            text-align: center;
-        }
-
-        .payment-method p {
-            margin: 0 0 15px 0;
-            color: #aaa;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        .payment-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 15px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .payment-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .payment-btn:hover::after {
-            left: 100%;
-        }
-
-        .payment-btn:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .payment-btn i {
-            font-size: 1.1rem;
-        }
-
-        .crypto-btn {
-            background-color: #8c59ff;
-        }
-
-        .crypto-btn:hover {
-            background-color: #7a4ae6;
-        }
-
-        .alt-btn {
-            background-color: #ff6b35;
-        }
-
-        .alt-btn:hover {
-            background-color: #e65a2b;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .modal-content {
-                margin: 2% auto;
-                padding: 20px;
-                width: 95%;
-            }
-            
-            .payment-method {
-                padding: 15px;
-            }
-            
-            .payment-icon {
-                font-size: 1.5rem;
-                gap: 10px;
-            }
-            
-            .payment-btn {
-                padding: 10px 12px;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .modal-content {
-                margin: 10px auto;
-                padding: 15px;
-            }
-            
-            .modal-header i {
-                font-size: 2rem;
-            }
-            
-            .modal-header h3 {
-                font-size: 1.3rem;
-            }
-            
-            .payment-method h4 {
-                font-size: 1.1rem;
-            }
-            
-            .payment-method p {
-                font-size: 0.8rem;
-            }
-        }
-    </style>
 </body>
 </html>
