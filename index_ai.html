@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIPTIDE | PC Mod Menu</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <meta name="title" content="RIPTIDE GTA 5 Mod Menu - BattleEye Bypass - Enhanced Edition Mods">
+    <meta name="description" content="Download RIPTIDE - the ultimate GTA 5 mod menu for GTA V including BattleEye bypass. Compatible with GTA 5 Enhanced Edition. Free and premium options available. Safe, reliable, and packed with features.">
+    <meta name="keywords" content="GTA 5 Mod Menu, GTA V Mod Menu, GTA 5 Mods, Free GTA 5 Mod Menu, BattleEye Bypass, GTA 5 Enhanced Edition, GTA 5 Enhanced Mods, GTA 5 Cheats, GTA 5 Exploits, GTA 5 Online Mods, RIPTIDE Mod Menu, GTA 5 Trainer, GTA 5 Loader, Safe GTA 5 Mods, GTA 5 PC Mods, GTA 5 BattleEye, GTA V Online Trainer">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #00a8ff;
+            --primary-dark: #0077b6;
+            --primary-light: rgba(0, 168, 255, 0.1);
+            --accent: #e84118;
+            --accent-light: rgba(232, 65, 24, 0.1);
+            --text: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --bg: #0a0e17;
+            --bg-light: #131a2a;
+            --bg-lighter: #1e2638;
+            --success: #4cd137;
+            --warning: #fbc531;
+            --error: #e84118;
+            --border-radius: 8px;
+            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --font-main: 'Montserrat', sans-serif;
+            --font-heading: 'Orbitron', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Particle background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--bg) 0%, #0a1220 100%);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Container styling */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header/Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background: rgba(10, 14, 23, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(10, 14, 23, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .logo h1 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--primary), #00f2fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+        }
+
+        .language-btn {
+            background: var(--bg-light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            padding: 8px 15px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+        }
+
+        .language-btn:hover {
+            background: var(--bg-lighter);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 250px;
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 15px;
+            margin-top: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .language-selector:hover .language-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-region {
+            color: var(--primary);
+            font-weight: 600;
+            margin: 15px 0 8px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .language-region:first-child {
+            margin-top: 0;
+        }
+
+        .language-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .language-dropdown a:hover {
+            background: var(--bg-lighter);
+            color: var(--text);
+        }
+
+        .flag-icon {
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-family: var(--font-heading);
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), #00f2fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        /* Fact of the Day */
+        .fact-container {
+            margin-top: 50px;
+        }
+
+        .fact-box {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            display: flex;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .fact-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        #fact-meme {
+            width: 200px;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .fact-content {
+            padding: 25px;
+            flex: 1;
+        }
+
+        .fact-content h3 {
+            color: var(--primary);
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        #fact-text {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        /* Button Styles */
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 168, 255, 0.4);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 168, 255, 0.6);
+        }
+
+        .cta-button:active {
+            transform: translateY(1px);
+        }
+
+        .cta-button.outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .cta-button.outline:hover {
+            background: var(--primary-light);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--primary), #00f2fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: var(--box-shadow);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .pricing-header {
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(0, 168, 255, 0.1) 0%, rgba(0, 168, 255, 0.05) 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .price {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-family: var(--font-main);
+            font-weight: 400;
+        }
+
+        .features-list {
+            padding: 30px;
+            list-style: none;
+        }
+
+        .features-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            color: var(--text-secondary);
+        }
+
+        .features-list li i {
+            color: var(--primary);
+            margin-right: 10px;
+            margin-top: 3px;
+            font-size: 0.9rem;
+        }
+
+        .preview-gui-btn {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .preview-gui-btn:hover {
+            background: var(--primary-light);
+        }
+
+        .purchase-btn {
+            display: block;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            margin: 0 30px 30px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .purchase-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 168, 255, 0.6);
+        }
+
+        /* Preview Section */
+        .media-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            background: var(--bg-light);
+            color: var(--text-secondary);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: var(--bg-lighter);
+            color: var(--text);
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .media-item {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .media-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .media-item video, .media-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .media-caption {
+            padding: 15px;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-light);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .footer-column p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--bg);
+            border-radius: 50%;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Gallery Popup */
+        .gallery-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .gallery-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .gallery-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .gallery-img {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+            margin: 0 auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .gallery-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .gallery-close:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+
+        .gallery-nav:hover {
+            background: var(--primary);
+        }
+
+        .gallery-prev {
+            left: 30px;
+        }
+
+        .gallery-next {
+            right: 30px;
+        }
+
+        /* Payment Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            animation: fadeIn 0.3s ease-out;
+            overflow-y: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--bg-light);
+            margin: 5% auto;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            border-radius: 12px;
+            color: white;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(-20px);
+            opacity: 0;
+            animation: slideUp 0.3s ease-out 0.1s forwards;
+            overflow-y: auto;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .modal-header i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .modal-header h3 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .close {
+            color: #aaa;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .close:hover {
+            color: white;
+            transform: scale(1.2);
+        }
+
+        .payment-options {
+            margin-top: 20px;
+        }
+
+        .payment-method {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--bg);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-method:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .payment-icon {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            color: var(--primary);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .payment-icon i {
+            transition: var(--transition);
+        }
+
+        .payment-icon i:hover {
+            transform: scale(1.2);
+            color: white;
+        }
+
+        .payment-method h4 {
+            margin: 0 0 5px 0;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .payment-method p {
+            margin: 0 0 15px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .payment-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 15px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .payment-btn i {
+            font-size: 1.1rem;
+        }
+
+        .crypto-btn {
+            background-color: #8c59ff;
+        }
+
+        .crypto-btn:hover {
+            background-color: #7a4ae6;
+        }
+
+        .alt-btn {
+            background-color: #ff6b35;
+        }
+
+        .alt-btn:hover {
+            background-color: #e65a2b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 4rem;
+            }
+            
+            .fact-box {
+                flex-direction: column;
+            }
+            
+            #fact-meme {
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 180px 0 80px;
+                text-align: center;
+            }
+            
+            .hero h2 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 2% auto;
+                padding: 20px;
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .media-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .modal-content {
+                margin: 10px auto;
+                padding: 15px;
+            }
+            
+            .modal-header i {
+                font-size: 2rem;
+            }
+            
+            .modal-header h3 {
+                font-size: 1.3rem;
+            }
+            
+            .payment-method h4 {
+                font-size: 1.1rem;
+            }
+            
+            .payment-method p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Riptide Logo">
+                    <h1>RIPTIDE</h1>
+                </div>
+                <div class="nav-links">
+                    <!-- Language Selector -->
+                    <div class="language-selector">
+                        <button class="language-btn">
+                            <span class="flag-icon flag-icon-us"></span> EN
+                        </button>
+                        <div class="language-dropdown">
+                            <div class="language-region">Europe</div>
+                            <a href="#" onclick="changeLanguage('en')"><span class="flag-icon flag-icon-gb"></span> English</a>
+                            <a href="#" onclick="changeLanguage('de')"><span class="flag-icon flag-icon-de"></span> German</a>
+                            <a href="#" onclick="changeLanguage('fr')"><span class="flag-icon flag-icon-fr"></span> French</a>
+                            <a href="#" onclick="changeLanguage('es')"><span class="flag-icon flag-icon-es"></span> Spanish</a>
+                            <a href="#" onclick="changeLanguage('it')"><span class="flag-icon flag-icon-it"></span> Italian</a>
+                            <a href="#" onclick="changeLanguage('nl')"><span class="flag-icon flag-icon-nl"></span> Dutch</a>
+                            <a href="#" onclick="changeLanguage('pl')"><span class="flag-icon flag-icon-pl"></span> Polish</a>
+                            <a href="#" onclick="changeLanguage('pt')"><span class="flag-icon flag-icon-pt"></span> Portuguese</a>
+                            <a href="#" onclick="changeLanguage('ru')"><span class="flag-icon flag-icon-ru"></span> Russian</a>
+                            
+                            <div class="language-region">Asia</div>
+                            <a href="#" onclick="changeLanguage('zh-CN')"><span class="flag-icon flag-icon-cn"></span> Chinese (Simplified)</a>
+                            <a href="#" onclick="changeLanguage('ja')"><span class="flag-icon flag-icon-jp"></span> Japanese</a>
+                            <a href="#" onclick="changeLanguage('ko')"><span class="flag-icon flag-icon-kr"></span> Korean</a>
+                            <a href="#" onclick="changeLanguage('th')"><span class="flag-icon flag-icon-th"></span> Thai</a>
+                            <a href="#" onclick="changeLanguage('vi')"><span class="flag-icon flag-icon-vn"></span> Vietnamese</a>
+                            <a href="#" onclick="changeLanguage('id')"><span class="flag-icon flag-icon-id"></span> Indonesian</a>
+                            <a href="#" onclick="changeLanguage('ms')"><span class="flag-icon flag-icon-my"></span> Malay</a>
+                            
+                            <div class="language-region">Middle East</div>
+                            <a href="#" onclick="changeLanguage('ar')"><span class="flag-icon flag-icon-sa"></span> Arabic</a>
+                            <a href="#" onclick="changeLanguage('tr')"><span class="flag-icon flag-icon-tr"></span> Turkish</a>
+                            <a href="#" onclick="changeLanguage('fa')"><span class="flag-icon flag-icon-ir"></span> Persian</a>
+                            
+                            <div class="language-region">Other</div>
+                            <a href="#" onclick="changeLanguage('hi')"><span class="flag-icon flag-icon-in"></span> Hindi</a>
+                            <a href="#" onclick="changeLanguage('fil')"><span class="flag-icon flag-icon-ph"></span> Filipino</a>
+                        </div>
+                    </div>
+                    <a href="TOS.html" target="_blank">TOS</a>
+                    <a href="guide.html" target="_blank">Guide</a>
+                    <a href="loader.html" target="_blank">Loader</a>
+                    <a href="luaapi.html" target="_blank">Lua API</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate">
+                <h2 class="floating">THE ULTIMATE GTA V MOD MENU</h2>
+                <p class="delay-1">Experience GTA V like never before with RIPTIDE - the most advanced and undetected BattleEye bypass mod menu with regular updates and premium features.</p>
+                
+                <!-- Fact of the Day Section -->
+                <div class="fact-container delay-2">
+                    <div class="fact-box">
+                        <img id="fact-meme" src="images/ok.png" alt="Funny Meme">
+                        <div class="fact-content">
+                            <h3>FACT OF THE DAY</h3>
+                            <p id="fact-text">Loading interesting fact...</p>
+                            <button id="new-fact-btn" class="cta-button">NEW FACT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title animate">
+                <h2>PACKAGES</h2>
+                <p>Choose the package that fits your needs</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card animate delay-1">
+                    <div class="pricing-header">
+                        <h3>GTA V - FREE</h3>
+                        <div class="price">$0.00 <span>/1 day</span></div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Lua API</li>
+                        <li><i class="fas fa-check"></i> Self Mods</li>
+                        <li><i class="fas fa-check"></i> Weapon Mods</li>
+                        <li><i class="fas fa-check"></i> Player Teleport</li>
+                        <li><i class="fas fa-check"></i> Basic Recoveries</li>
+                        <li><i class="fas fa-check"></i> List/Click UI</li>
+                        <li><i class="fas fa-check"></i> Limited Amount of Features</li>
+                        <li><i class="fas fa-check"></i> Battleye Off Supported (GTA V & GTA ONLINE)</li>
+                        <li><i class="fas fa-check"></i> Game Version: GTA V ENHANCED</li>
+                        <li>
+                            <button class="preview-gui-btn" onclick="openGallery()">
+                                <i class="fas fa-eye"></i> Preview GUI
+                            </button>
+                        </li>
+                    </ul>
+                    <a href="https://bstlar.com/F/RIPTIDEfreeKEY" target="_blank" class="purchase-btn">GET A FREE KEY</a>
+                </div>
+                
+                <div class="pricing-card animate delay-2">
+                    <div class="pricing-header">
+                        <h3>GTA V - ULTIMATE</h3>
+                        <div class="price">$24.99 <span>Lifetime</span></div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Lua API</li>
+                        <li><i class="fas fa-check"></i> Full Account Recovery</li>
+                        <li><i class="fas fa-check"></i> Business & Heist Manager</li>
+                        <li><i class="fas fa-check"></i> Outfit & Vehicle Editor</li>
+                        <li><i class="fas fa-check"></i> ScriptHookV Integration</li>
+                        <li><i class="fas fa-check"></i> Advanced Player Trolling</li>
+                        <li><i class="fas fa-check"></i> List/Click UI</li>
+                        <li><i class="fas fa-check"></i> Access to New Features</li>
+                        <li><i class="fas fa-check"></i> Battleye On/Off Supported (GTA V & GTA ONLINE)</li>
+                        <li><i class="fas fa-check"></i> Game Version: GTA V ENHANCED</li>
+                        <li>
+                            <button class="preview-gui-btn" onclick="openGallery()">
+                                <i class="fas fa-eye"></i> Preview GUI
+                            </button>
+                        </li>
+                    </ul>
+                    <a href="#" id="purchaseBtn" class="purchase-btn">PURCHASE NOW</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Preview Section -->
+    <section class="preview-section" id="preview">
+        <div class="container">
+            <div class="preview-container">
+                <div class="section-title animate">
+                    <h2>PREVIEW</h2>
+                    <p>See our mod menus in action</p>
+                </div>
+                
+                <div class="media-tabs animate delay-1">
+                    <button class="tab-btn active" data-tab="videos">GTA V</button>
+                    <button class="tab-btn" data-tab="RDR2">RDR2</button>
+                    <button class="tab-btn" data-tab="images">Images</button>
+                    <button class="tab-btn" data-tab="gifs">GIFs</button>
+                </div>
+                
+                <div class="media-grid animate delay-2">
+                    <div class="media-item">
+                        <video controls poster="images/video-thumbnail.jpg">
+                            <source src="preview.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="media-caption">Full Menu Walkthrough / Showcase</div>
+                    </div>
+                    <div class="media-item">
+                        <video controls poster="images/video-thumbnail.jpg">
+                            <source src="preview.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="media-caption">GUI Preview</div>
+                    </div>
+                    <div class="media-item">
+                        <video controls poster="images/video-thumbnail.jpg">
+                            <source src="preview.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="media-caption">Recovery Preview</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="https://via.placeholder.com/300x200" alt="Preview Picture 1">
+                        <div class="media-caption">Test</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="https://via.placeholder.com/300x200" alt="Preview Picture 2">
+                        <div class="media-caption">Vehicle Spawner</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="https://via.placeholder.com/300x200" alt="Preview Picture 3">
+                        <div class="media-caption">Player Options</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="support">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>RIPTIDE</h3>
+                    <p>GTA V & RDR2 Mod Menu</p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/tvWJntnw" target="_blank"><i class="fab fa-discord"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>RESOURCES</h3>
+                    <ul>
+                        <li><a href="loader.html" target="_blank">Loader - Download</a></li>
+                        <li><a href="luaapi.html" target="_blank">Lua API docs</a></li>
+                        <li><a href="guide.html" target="_blank">Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>LEGAL</h3>
+                    <ul>
+                        <li><a href="TOS.html" target="_blank">Terms of Service</a></li>
+                        <li><a href="#" target="_blank">Privacy Policy</a></li>
+                        <li><a href="#" target="_blank">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 RIPTIDE Mod Menu. All rights reserved.</p>
+                <p>This content is not affiliated with Rockstar Games, Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Gallery Popup -->
+    <div id="galleryPopup" class="gallery-popup">
+        <span class="gallery-close" onclick="closeGallery()">&times;</span>
+        <div class="gallery-content">
+            <img id="galleryImg" class="gallery-img" src="" alt="GUI Preview">
+            <div class="gallery-nav gallery-prev" onclick="navigateGallery(-1)">&#10094;</div>
+            <div class="gallery-nav gallery-next" onclick="navigateGallery(1)">&#10095;</div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <i class="fas fa-credit-card"></i>
+                <h3>Select Payment Method</h3>
+            </div>
+            <div class="payment-options">
+                <div class="payment-method">
+                    <div class="payment-icon">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                        <i class="fab fa-google-pay"></i>
+                    </div>
+                    <h4>Card & Digital Wallets</h4>
+                    <p>Instant Delivery</p>
+                    <a href="https://nenyooo.myshopify.com/products/riptide-ultimate-lifetime" target="_blank" class="payment-btn">
+                        <i class="fas fa-shopping-cart"></i> Pay By Card
+                    </a>
+                </div>
+                
+                <div class="payment-method">
+                    <div class="payment-icon">
+                        <i class="fab fa-bitcoin"></i>
+                        <i class="fab fa-ethereum"></i>
+                    </div>
+                    <h4>Crypto Payments</h4>
+                    <p>Instant Delivery</p>
+                    <button class="payment-btn crypto-btn">
+                        <i class="fas fa-coins"></i> Pay with Crypto (20% OFF)
+                    </button>
+                </div>
+                
+                <div class="payment-method">
+                    <div class="payment-icon">
+                        <i class="fab fa-paypal"></i>
+                        <i class="fas fa-exchange-alt"></i>
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h4>Alternative Methods</h4>
+                    <p>PayPal F&F | Skrill | Paysafe | Steam Gift Card</p>
+                    <button class="payment-btn alt-btn">
+                        <i class="fas fa-ticket-alt"></i> Open Support Ticket
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Google Translate Element -->
+    <div id="google_translate_element" style="display:none;"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    
+    <script>
+        // Initialize particles.js
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#00a8ff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#00a8ff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Gallery functionality
+        const galleryImages = [
+            "images/LISTui.png",
+            "images/CLICKui.png"
+        ];
+        
+        let currentImageIndex = 0;
+        
+        function openGallery(index = 0) {
+            currentImageIndex = index;
+            const popup = document.getElementById('galleryPopup');
+            const img = document.getElementById('galleryImg');
+            img.src = galleryImages[currentImageIndex];
+            popup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeGallery() {
+            const popup = document.getElementById('galleryPopup');
+            popup.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function navigateGallery(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
+            if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
+            document.getElementById('galleryImg').src = galleryImages[currentImageIndex];
+        }
+        
+        // Language translation functions
+        function changeLanguage(lang) {
+            const btn = document.querySelector('.language-btn');
+            btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i>`;
+            
+            if (typeof google === 'undefined' || !google.translate) {
+                var googleTranslateScript = document.createElement('script');
+                googleTranslateScript.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+                document.head.appendChild(googleTranslateScript);
+                
+                localStorage.setItem('pendingLanguage', lang);
+                return;
+            }
+            
+            translatePage(lang);
+        }
+        
+        function translatePage(lang) {
+            if (google.translate.translatePage) {
+                google.translate.translatePage('en', lang, function() {
+                    updateLanguageButton(lang);
+                    localStorage.setItem('selectedLanguage', lang);
+                });
+            } 
+            else if (typeof googleTranslateElementInit !== 'undefined') {
+                var selectField = document.querySelector("#google_translate_element select.goog-te-combo");
+                if (selectField) {
+                    selectField.value = lang;
+                    selectField.dispatchEvent(new Event('change'));
+                    updateLanguageButton(lang);
+                    localStorage.setItem('selectedLanguage', lang);
+                }
+            }
+        }
+        
+        function updateLanguageButton(lang) {
+            const btn = document.querySelector('.language-btn');
+            const langData = getLanguageData(lang);
+            btn.innerHTML = `<span class="flag-icon ${langData.flagClass}"></span> ${langData.code}`;
+        }
+        
+        function getLanguageData(lang) {
+            const languages = {
+                'en': { flagClass: 'flag-icon-gb', code: 'EN' },
+                'de': { flagClass: 'flag-icon-de', code: 'DE' },
+                'fr': { flagClass: 'flag-icon-fr', code: 'FR' },
+                'es': { flagClass: 'flag-icon-es', code: 'ES' },
+                'it': { flagClass: 'flag-icon-it', code: 'IT' },
+                'nl': { flagClass: 'flag-icon-nl', code: 'NL' },
+                'pl': { flagClass: 'flag-icon-pl', code: 'PL' },
+                'pt': { flagClass: 'flag-icon-pt', code: 'PT' },
+                'ru': { flagClass: 'flag-icon-ru', code: 'RU' },
+                'zh-CN': { flagClass: 'flag-icon-cn', code: '中文' },
+                'ja': { flagClass: 'flag-icon-jp', code: '日本語' },
+                'ko': { flagClass: 'flag-icon-kr', code: '한국어' },
+                'th': { flagClass: 'flag-icon-th', code: 'ไทย' },
+                'vi': { flagClass: 'flag-icon-vn', code: 'VN' },
+                'id': { flagClass: 'flag-icon-id', code: 'ID' },
+                'ms': { flagClass: 'flag-icon-my', code: 'MS' },
+                'ar': { flagClass: 'flag-icon-sa', code: 'العربية' },
+                'tr': { flagClass: 'flag-icon-tr', code: 'TR' },
+                'fa': { flagClass: 'flag-icon-ir', code: 'فارسی' },
+                'hi': { flagClass: 'flag-icon-in', code: 'हिंदी' },
+                'fil': { flagClass: 'flag-icon-ph', code: 'FIL' }
+            };
+            
+            return languages[lang] || languages['en'];
+        }
+        
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,de,fr,es,it,nl,pl,pt,ru,zh-CN,ja,ko,th,vi,id,ms,ar,tr,fa,hi,fil',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+            
+            const pendingLang = localStorage.getItem('pendingLanguage');
+            if (pendingLang) {
+                translatePage(pendingLang);
+                localStorage.removeItem('pendingLanguage');
+            }
+            
+            const savedLang = localStorage.getItem('selectedLanguage');
+            if (savedLang) {
+                translatePage(savedLang);
+            }
+        }
+        
+        // Language Dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageBtn = document.querySelector('.language-btn');
+            const languageDropdown = document.querySelector('.language-dropdown');
+            
+            languageBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                languageDropdown.classList.toggle('show');
+            });
+            
+            document.addEventListener('click', function() {
+                languageDropdown.classList.remove('show');
+            });
+            
+            languageDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            
+            const savedLang = localStorage.getItem('selectedLanguage');
+            if (savedLang) {
+                updateLanguageButton(savedLang);
+            }
+            
+            // Random facts for fact of the day
+            const facts = [
+                "Did you know? GTA V has sold over 170 million copies worldwide as of 2023.",
+                "The development budget for GTA V was around $265 million, making it one of the most expensive games ever made.",
+                "Los Santos in GTA V is roughly the same size as Liberty City in GTA IV, but feels much bigger due to varied terrain.",
+                "GTA Online has been updated with new content consistently since its launch in 2013.",
+                "The voice actor for Franklin (Shawn Fonteno) is the cousin of the voice actor for CJ in San Andreas (Young Maylay).",
+                "GTA V was originally released on PlayStation 3 and Xbox 360 in 2013, before being remastered for newer consoles.",
+                "The game's map is based on Los Angeles and Southern California, with landmarks like the Hollywood sign included.",
+                "Michael's character was inspired by several real-life bank robbers and Hollywood movies about heists.",
+                "GTA V broke 7 Guinness World Records on its release, including fastest-selling entertainment product.",
+                "The game's soundtrack features over 240 licensed songs across its radio stations."
+            ];
+            
+            const factText = document.getElementById('fact-text');
+            const newFactBtn = document.getElementById('new-fact-btn');
+            
+            function showRandomFact() {
+                const randomFact = facts[Math.floor(Math.random() * facts.length)];
+                factText.textContent = randomFact;
+            }
+            
+            showRandomFact();
+            
+            newFactBtn.addEventListener('click', showRandomFact);
+            
+            // Media tabs functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const mediaItems = document.querySelectorAll('.media-item');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const tab = btn.getAttribute('data-tab');
+                    mediaItems.forEach(item => {
+                        if (tab === 'images') {
+                            item.style.display = item.querySelector('img') ? 'block' : 'none';
+                        } else if (tab === 'gifs') {
+                            item.style.display = 'none';
+                        } else if (tab === 'videos') {
+                            item.style.display = item.querySelector('video') ? 'block' : 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Payment Modal functionality
+            const modal = document.getElementById("paymentModal");
+            const btn = document.getElementById("purchaseBtn");
+            const span = document.querySelector(".modal .close");
+            
+            function adjustModalPosition() {
+                const modalContent = document.querySelector('.modal-content');
+                const viewportHeight = window.innerHeight;
+                const modalHeight = modalContent.offsetHeight;
+                
+                if (modalHeight > viewportHeight * 0.9) {
+                    modalContent.style.margin = '20px auto';
+                    modalContent.style.maxHeight = 'calc(100vh - 40px)';
+                } else {
+                    modalContent.style.margin = '5% auto';
+                    modalContent.style.maxHeight = '90vh';
+                }
+            }
+            
+            if (btn) {
+                btn.onclick = function(e) {
+                    e.preventDefault();
+                    modal.style.display = "block";
+                    document.body.style.overflow = 'hidden';
+                    adjustModalPosition();
+                }
+            }
+            
+            if (span) {
+                span.onclick = function() {
+                    modal.style.display = "none";
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            window.addEventListener('resize', adjustModalPosition);
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Add click handlers for the payment buttons
+            const cryptoBtn = document.querySelector('.crypto-btn');
+            if (cryptoBtn) {
+                cryptoBtn.addEventListener('click', function() {
+                    window.open('https://dizzgaming.selly.store/product/422f13f4', '_blank');
+                });
+            }
+            
+            const altBtn = document.querySelector('.alt-btn');
+            if (altBtn) {
+                altBtn.addEventListener('click', function() {
+                    window.open('https://discord.gg/ZfJUMxbANh', '_blank');
+                });
+            }
+            
+            // GSAP animations for elements
+            gsap.from(".animate", {
+                duration: 0.8,
+                opacity: 0,
+                y: 50,
+                stagger: 0.2,
+                ease: "power2.out"
+            });
+        });
+    </script>
+</body>
+</html>
